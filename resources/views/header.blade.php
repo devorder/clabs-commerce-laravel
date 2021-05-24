@@ -28,7 +28,7 @@ $cart_items = (new ProductController)->get_cart_count();
         <ul class="navbar-nav" style="margin-right: 50px;">
           @if ($cart_items)
             <li class="nav-item">
-              <a class="nav-link" href="cart">Cart({{$cart_items}})</a>
+              <a class="nav-link" href="{{ route('cart') }}">Cart({{$cart_items}})</a>
             </li>              
           @endif
           @if ($user)

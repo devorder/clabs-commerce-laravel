@@ -26,4 +26,8 @@ class UserController extends Controller
         }
         return redirect('/');
     }
+
+    public function pay(Request $request){
+        return $request->input();
+    }
 }

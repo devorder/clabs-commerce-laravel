@@ -42,7 +42,7 @@
                         <div class="col">
                             <form method="post" action="{{ route('buy-cart-product') }}">
                                 @csrf
-                                <input type="hidden" name="user_id">
+                                <input type="hidden" name="buy_all" value="true">
                                 <button type="submit" class="btn btn-outline-info w-25">Buy All</button>
                             </form>
                         </div>

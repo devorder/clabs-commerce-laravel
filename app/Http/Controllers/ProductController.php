@@ -70,8 +70,15 @@ class ProductController extends Controller
     public function buy_cart_product(Request $request){
         if(!(Session::has('user'))){
             return redirect('/login');
-        }else{
-            return $request;
         }
+        if($request->product_id){
+            $product_id = $request->product_id;
+            $products = Products::where('id', $product_id)->get();
+        }
+        if($request->buy_all){
+            $user_id = Session::get('user')->id;
+            $products = CartModel::where('user_id', $user_id)->join('products', 'products.id', '=', 'cart.product_id')->get();            
+        }
+        return view('order-page', ['products' => $products]);
     }
 }
