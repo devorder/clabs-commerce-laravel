@@ -11,7 +11,16 @@
 <body>
     @include('header')
 
-    @yield('content')
+    @if(Session::has('success'))
+        <p class="alert alert-success">{{ Session::get('success') }}</p>
+    @endif
+    @if(Session::has('alert'))
+        <p class="alert alert-danger">{{ Session::get('alert') }}</p>
+    @endif
+
+    <div class="container-fluid" style="min-height: 48vh">
+        @yield('content')
+    </div>
 
     @include('footer')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

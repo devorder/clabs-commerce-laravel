@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -16,5 +17,13 @@ class UserController extends Controller
         }else{
             return "username or password not matched";
         }
+    }
+
+    public function logout(){
+        if(Session::has('user')){
+            Session::forget('user');
+            Session::flush();
+        }
+        return redirect('/');
     }
 }
